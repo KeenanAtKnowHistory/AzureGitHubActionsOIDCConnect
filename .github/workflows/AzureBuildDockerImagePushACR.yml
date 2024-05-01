@@ -9,14 +9,14 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: dotnet
+        working-directory: api
     steps:
     - uses: actions/checkout@v2
     - uses: azure/docker-login@v1
       with:
-        login-server: cloudquicklabsacr.azurecr.io
+        login-server: khtestacr.azurecr.io
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
     - run: |
-        docker build . -t cloudquicklabsacr.azurecr.io/myapp:${{ github.sha }}
-        docker push cloudquicklabsacr.azurecr.io/myapp:${{ github.sha }}
+        docker build . -t khtestacr.azurecr.io/myapp:${{ github.sha }}
+        docker push khtestacr.azurecr.io/myapp:${{ github.sha }}
